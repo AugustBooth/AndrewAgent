@@ -1,6 +1,6 @@
-package test.library.api;
+package andrew.agent.webaccess.api;
 
-import test.library.HelloImpl;
+import andrew.agent.webaccess.HelloImpl;
 
 public class SayHello {
 

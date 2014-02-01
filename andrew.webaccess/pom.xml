@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>andrew</groupId>
-	<artifactId>andrew.selenium</artifactId>
+	<artifactId>andrew.webaccess</artifactId>
 	<packaging>bundle</packaging>
 	<version>1.0.0</version>
-	<name>andrew selenium connector</name>
+	<name>andrew web access</name>
 	<build>
 		<plugins>
 			<plugin>
@@ -34,7 +34,7 @@
 					<instructions>
 						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
-						<Export-Package>test.library.api</Export-Package>
+						<Export-Package>andrew.agent.webaccess.api</Export-Package>
 						<!-- 
 								<Bundle-Activator>org.foo.myproject.impl1.Activator</Bundle-Activator>
 						-->
