@@ -18,7 +18,23 @@
         </dependency>
         <dependency>
             <groupId>andrew</groupId>
-            <artifactId>andrew.web</artifactId>
+            <artifactId>andrew.db</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>andrew</groupId>
+            <artifactId>andrew.tricks</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>andrew</groupId>
+            <artifactId>andrew.ui</artifactId>
+            <version>1.0.0</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>andrew</groupId>
+            <artifactId>andrew.services</artifactId>
             <version>1.0.0</version>
             <type>war</type>
         </dependency>
@@ -26,7 +42,10 @@
 
     <modules>
         <module>andrew.webaccess</module>
-        <module>andrew.webui</module>
+        <module>andrew.ui</module>
+        <module>andrew.services</module>
+        <module>andrew.db</module>
+        <module>andrew.tricks</module>
     </modules>
 
     <build>
