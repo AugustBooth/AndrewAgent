@@ -9,7 +9,7 @@
   <groupId>andrew</groupId>
   <artifactId>andrew.ui</artifactId>
   <packaging>war</packaging>
-  <version>1.0.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>Andrew User Interface</name>
 
   <properties>
@@ -99,6 +99,8 @@
         </executions>
         <configuration>
           <webappDirectory>${webappDirectory}</webappDirectory>
+          <!-- AB: Added following line to remove build warning. -->
+          <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
         </configuration>
       </plugin>
       <plugin>

@@ -19,90 +19,92 @@
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<!-- Project detailes -->
-	<modelVersion>4.0.0</modelVersion>
+    <!-- Project detailes -->
+    <modelVersion>4.0.0</modelVersion>
     <groupId>andrew</groupId>
-	<artifactId>andrew.services</artifactId>
-	<packaging>war</packaging>
-    <version>1.0.0</version>
-	<name>Andrew Services</name>
+    <artifactId>andrew.services</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Andrew Services</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
                 <version>2.4.0</version>
 
-				<!-- see references:
+                <!-- see references:
 				        https://code.google.com/p/choncms/source/browse/trunk/chon-platform/bnd-libs/pom.xml
 						http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html
 						http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
 						-->
-				<configuration>
-					<excludeDependencies>*;scope=provided|runtime</excludeDependencies>
-					<instructions>
-						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
-						<Embed-Transitive>true</Embed-Transitive>
-						<!--
+                <configuration>
+                    <!-- AB: Added following line to remove build warning. -->
+                    <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+                    <excludeDependencies>*;scope=provided|runtime</excludeDependencies>
+                    <instructions>
+                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+                        <!--
                         <Export-Package>andrew.agent.webaccess.api</Export-Package>
 						 
 								<Bundle-Activator>org.foo.myproject.impl1.Activator</Bundle-Activator>
 						-->
-					</instructions>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-    
-    
-	<!-- Dependency on Wink SDK library -->
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.wink</groupId>
-			<artifactId>wink-common</artifactId>
+                    </instructions>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <!-- Dependency on Wink SDK library -->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-common</artifactId>
             <version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.wink</groupId>
-			<artifactId>wink-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-server</artifactId>
             <version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>1.4.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<version>1.4.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-        
-	</dependencies>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>1.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <version>1.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 </project>
