@@ -1,0 +1,173 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>andrew</groupId>
+	<artifactId>andrew.persistence</artifactId>
+	<packaging>bundle</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Andrew Persistence Bundle</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+                <version>2.4.0</version>
+
+				<!-- see references:
+				        https://code.google.com/p/choncms/source/browse/trunk/chon-platform/bnd-libs/pom.xml
+						http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html
+						http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+						-->
+				<configuration>
+					<excludeDependencies>*;scope=provided|runtime</excludeDependencies>
+					<instructions>
+						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
+						<Export-Package>andrew.agent.persistence.api</Export-Package>
+						<!-- 
+								<Bundle-Activator>org.foo.myproject.impl1.Activator</Bundle-Activator>
+						-->
+					</instructions>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
+			</plugin>
+
+			
+<!--  Uncomment this configuration to enable build-time enhancement -->
+<!--		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<configuration>
+							<tasks>
+								<path
+									id="enhance.path.ref">
+									<fileset
+										dir="${project.build.outputDirectory}">
+										<include
+											name="AuthorImpl.class" />
+										<include
+											name="EntryImpl.class" />
+									</fileset>
+								</path>
+								<pathconvert
+									property="enhance.files"
+									refid="enhance.path.ref"
+									pathsep=" " />
+								<java
+									classname="org.apache.openjpa.enhance.PCEnhancer">
+									<arg
+										line="-p persistence.xml" />
+									<arg
+										line="${enhance.files}" />
+									<classpath>
+										<path
+											refid="maven.dependency.classpath" />
+										<path
+											refid="maven.compile.classpath" />
+									</classpath>
+								</java>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+-->
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>andrew</groupId>
+			<artifactId>andrew.api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jpa_2.0_spec</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jta_1.1_spec</artifactId>
+			<version>1.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+    
+		<!-- OpenJPA PCEnhancer dependencies -->
+        <!--  Uncomment these dependencies to enable build-time enhancement.
+        If you use build-time enhancement, don't forget to add the following
+        import to the MANIFEST.MF: org.apache.openjpa.enhance -->
+<!--  	<dependency>
+			<groupId>net.sourceforge.serp</groupId>
+			<artifactId>serp</artifactId>
+			<version>1.13.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		-->
+		<!-- end OpenJPA PCEnhancer dependencies -->
+
+	</dependencies>
+
+</project>

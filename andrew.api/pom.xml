@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>andrew</groupId>
-	<artifactId>andrew.tricks</artifactId>
+	<artifactId>andrew.api</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.0</version>
-	<name>Andrew Tricks</name>
+	<version>1.0-SNAPSHOT</version>
+	<name>Andrew API</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -39,7 +39,7 @@
 					<instructions>
 						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
-						<Export-Package>andrew.agent.webaccess.api</Export-Package>
+						<Export-Package>andrew.agent.api</Export-Package>
 						<!-- 
 								<Bundle-Activator>org.foo.myproject.impl1.Activator</Bundle-Activator>
 						-->
@@ -51,7 +51,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+    
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
@@ -71,7 +71,5 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-        
 	</dependencies>
-
 </project>

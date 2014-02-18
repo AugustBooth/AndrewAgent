@@ -1,13 +1,15 @@
 package andrew.agent.tricks.test;
 
 
-import static org.junit.Assert.assertTrue;
-
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import andrew.agent.api.Trick;
+import andrew.agent.tricks.api.TricksFactory;
 
 
 	public class TestTricks {
@@ -26,4 +28,17 @@ import org.junit.Test;
 	    //b.close();
 	  }
 
+      
+      @Test
+	  public void testQueryTricks() {
+		  Set<Trick> tricks = TricksFactory.getTricks();
+	  }
+      
+      
+      @Test
+	  public void testAddAndRemoveTrick() {
+		  Set<Trick> tricks = TricksFactory.getTricks();
+	  }
+      
+      
 	} 
